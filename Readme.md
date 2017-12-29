@@ -21,3 +21,7 @@ run the bash script.
 7) 
 8) make into an offbeat brew package?
 
+```
+#
+# change the name of screensaverprogram via second commnd-line ARGV
+```
