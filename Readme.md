@@ -1,4 +1,4 @@
-# give me your playlist. <br>...I don't want it, here have a screensaver.
+# give me your playlist. <br>... **burp**[.] I don't want it user; here have a screensaver.
 ![meeseeks_box_logo](https://user-images.githubusercontent.com/11463275/34438674-7716d32a-ec76-11e7-8e53-6259e7616ed9.png)
 
 ## Instructions:
