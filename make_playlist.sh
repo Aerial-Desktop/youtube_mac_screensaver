@@ -9,7 +9,7 @@
 #
 # change the name of screensaverprogram via second commnd-line ARGV
 
-# git clone https://github.com/liquidx/webviewscreensaver.git
+ git clone https://github.com/liquidx/webviewscreensaver.git &&
 
 
 # string conversion
@@ -29,6 +29,24 @@ pathy="webviewscreensaver/WebViewScreenSaver/WVSSAddress.m"
 replace_line="static NSString * const kScreenSaverDefaultURL = @\"$converted_string\";"
 echo $replace_line
 
-
 sed -i '' '25s?.*?'""'?' $pathy
 sed -i '' '25s~.*~'"$replace_line"'~' $pathy
+
+# recompile program to create screeensaver to user.
+# gcc -framework Foundation WebViewScreenSaver/WebViewScreenSaverRig/main.m -o test -v
+# this implementation is pending better wifi connection to download xcode.
+# additionally get screensaver location to move to this current location for user's use.
+
+# modify screensavers name from second command line argument.
+#if not it will default to a numerical structure.
+### saver_location="test/path"
+# num=0;
+# if($2 !== "")
+### mv $saver_location ./$2.saver
+# else 
+#   cp -rf $saver_location ./youtube-sc-$num
+#   if exit code increment
+# fi
+
+
+
