@@ -9,16 +9,26 @@
 #
 # change the name of screensaverprogram via second commnd-line ARGV
 
-#### git clone https://github.com/liquidx/webviewscreensaver.git
+# git clone https://github.com/liquidx/webviewscreensaver.git
+
 
 # string conversion
-stringy="https://www.youtube.com/watch?v=durCuF6jb8k&list=PLZbIo_dYB77vgAus0es8Ul3kFkRYIRjJc"
-# https://www.youtube.com/embed/durCuF6jb8k?rel=0&autoplay=1&list=PLZbIo_dYB77vgAus0es8Ul3kFkRYIRjJc&index=1&?rel=0&autoplay=1
 
 # cut before "watch?v=" to variable 1
 # cut everything after "watch?v=" to variable 2
 # variable1 + "/embed/" + variable2 + ?rel=0&autoplay=1
 
-var1=$(echo $stringy | cut -c1-23)
-var2=$(echo $stringy | cut -c33-)
-echo $var1"/embed/"$var2"?rel=0&autoplay=1"
+stringy="https://www.youtube.com/watch?v=durCuF6jb8k&list=PLZbIo_dYB77vgAus0es8Ul3kFkRYIRjJc"
+# https://www.youtube.com/embed/durCuF6jb8k?rel=0&autoplay=1&list=PLZbIo_dYB77vgAus0es8Ul3kFkRYIRjJc&index=1&?rel=0&autoplay=1
+var1=$(echo $stringy | cut -c1-23);var2=$(echo $stringy | cut -c33-);converted_string=$(echo $var1"/embed/"$var2"?rel=0&autoplay=1");
+
+# modifying the default webview
+pathy="webviewscreensaver/WebViewScreenSaver/WVSSAddress.m"
+# line 25
+# replace google.com or replace *?
+replace_line="static NSString * const kScreenSaverDefaultURL = @\"$converted_string\";"
+echo $replace_line
+
+
+sed -i '' '25s?.*?'""'?' $pathy
+sed -i '' '25s~.*~'"$replace_line"'~' $pathy
